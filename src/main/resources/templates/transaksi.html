@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- ! xmlns:th="http://www.thymeleaf.org" is required for
+thymeleaf template engine -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+  />
+
+  <!-- Bootstrap -->
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous"
+  />
+  <!-- Bootstrap -->
+  <title>Transaksi Mainan</title>
+</head>
+<body
+        class="container d-flex flex-column justify-content-center" style="min-height: 100vh"
+>
+<!-- Bootstrap -->
+<script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"
+></script>
+<!-- <body> -->
+<br>
+<br>
+<h1 class="text-center">TRANSAKSI MAINAN</h1>
+<br>
+<a href="/addtransaksi" class="btn btn-info w-full mt-2">Tambah Transaksi Mainan</a>
+<div class="mt-2">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID TRANSAKSI</th>
+      <th scope="col">JUMLAH</th>
+      <th scope="col">PEMBAYARAN</th>
+      <th scope="col">TANGGAL TRANSAKSI</th>
+      <th scope="col">ACTION</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="t : ${transaksi}">
+      <td th:text="${t.id_transaksi}"></td>
+      <td th:text="${t.jml_mainan}"></td>
+      <td th:text="${t.pembayaran}"></td>
+      <td th:text="${t.tgl_transaksi}"></td>
+      <td>
+        <a th:href="@{/harddeletetransaksi/{id_transaksi}(id_transaksi=${t.id_transaksi})}" class="btn btn-danger">Delete</a>
+        <a th:href="@{/detailtransaksimainan/{id_transaksi}(id_transaksi=${t.id_transaksi})}" class="btn btn-primary">Detail</a>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- Bootstrap -->
+</body>
+</html>
